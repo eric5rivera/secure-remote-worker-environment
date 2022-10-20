@@ -1,1 +1,13 @@
-terraform.tfstate
+*.tfstate
+*.tfstate.backup
+.tfstate.lock.info
+*.terraform.lock.hcl
+*.log
+.terraform
+
+*.pem
+
+*.backup
+*gitignore*.tf
+.DS_Store
+.vscode/
