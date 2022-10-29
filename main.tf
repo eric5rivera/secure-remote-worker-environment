@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 terraform {
   cloud {
     organization = "ericmrivera"
@@ -108,3 +109,15 @@ module "ec2_instance" {
     Environment = "dev"
   }
 }
+||||||| parent of e6a9a10 (Create add-radius-branch)
+=======
+terraform {
+  cloud {
+    organization = "ericmrivera"
+
+    workspaces {
+      name = "secure-remote-worker-environment"
+    }
+  }
+}
+>>>>>>> e6a9a10 (Create add-radius-branch)
