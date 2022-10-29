@@ -8,13 +8,13 @@ from diagrams.aws.security import DirectoryService
 from diagrams.aws.storage import Fsx
 from diagrams.aws.network import PrivateSubnet
 from diagrams.aws.network import VPCElasticNetworkInterface
+from diagrams.aws.general import User
 
-with Diagram("Enclave", show=False):
-        with Cluster("VPC - Room"):
-                VPCElasticNetworkInterface("")
-                with Cluster("Private Subnet - us-west-2a"):
-                        DirectoryService("Directory demo.local")
-                        workspace = Workspaces("Admin WorkSpace")
-                        Fsx("FSx")
-        with Cluster("Private Subnet - us-west-2b"):
-")
+from diagrams.aws.network import VPC
+
+with Diagram("Secure Remote Worker Environment", show=False):
+        User("End User")
+        with Cluster("VPC - 10.10.0.0/16"):
+                DirectoryService("Directory demo.local")
+                workspace = Workspaces("WorkSpace")
+                Fsx("FSx")
