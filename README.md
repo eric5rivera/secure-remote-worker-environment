@@ -1,12 +1,12 @@
 # Secure Remote Worker Environment
-Inspired by AWS's [Secure Remote Worker Environment Reference Architecture](https://d1.awsstatic.com/architecture-diagrams/ArchitectureDiagrams/secure-remote-worker-environment-ra.pdf?did=wp_card&trk=wp_card), deployed using Infrastructure as Code (IaC)
+Inspired by [AWS's Secure Remote Worker Environment Reference Architecture](https://d1.awsstatic.com/architecture-diagrams/ArchitectureDiagrams/secure-remote-worker-environment-ra.pdf?did=wp_card&trk=wp_card); deployed using Infrastructure as Code (IaC).
 
 
 ## Table of Contents
 - [Technologies](#technologies)
-- [Usage](#usage)
+- [Getting Started](#getting-started)
     - [Pre-requisites](#pre-requisites)
-    - [Deployment](#deployment)
+    - [Usage](#usage)
 - [Future Work](#future-work)
 - [References](#references)
 
@@ -17,7 +17,7 @@ Inspired by AWS's [Secure Remote Worker Environment Reference Architecture](http
 - more
 
 
-![Alt text](./secure_remote_worker_environment.png "Secure Remote Worker Environment diagram")
+![Alt text](./secure_remote_worker_environment.png) "Secure Remote Worker Environment diagram")
 
 
 As for now, the following resources are provisioned by Ansible:
@@ -26,7 +26,7 @@ As for now, the following resources are provisioned by Ansible:
 - FSx File Server
 
 
-# Usage
+# Getting Started
 
 ## Pre-requisites
 
@@ -37,7 +37,7 @@ As for now, the following resources are provisioned by Ansible:
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 
-## Deployment
+## Usage
 - Just clone this repository by typing: git clone `https://github.com/eric5rivera/secure-remote-worker-environment.git`
 - Switch to project directory: `secure-remote-worker-environment.git`
 - Create a Terraform Cloud Workspace 
@@ -47,7 +47,7 @@ terraform init
 ```
 
 ## Future Work
-- Implement multi-factor authentication (MFA)
+- [ ]Implement multi-factor authentication (MFA)
 - Implement Group policy in Active Directory to prevent unwanted activities
 - Forward DNS to Amazon Route 53 VPC DNS resolver with applied Route 53 Resolver DNS Firewall
 rules
