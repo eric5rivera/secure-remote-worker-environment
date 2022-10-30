@@ -14,8 +14,7 @@ from diagrams.aws.network import VPC
 
 with Diagram("Secure Remote Worker Environment", show=False):
         User("End User")
-        VPC("")
-        with Cluster("Private Subnet - us-west-2a"):
+        with Cluster("VPC - 10.10.0.0/16"):
                 DirectoryService("Directory demo.local")
                 workspace = Workspaces("WorkSpace")
                 Fsx("FSx")
