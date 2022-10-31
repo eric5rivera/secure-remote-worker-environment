@@ -15,9 +15,9 @@ resource "aws_security_group" "bastion-server" {
   vpc_id      = module.vpc.vpc_id
 
   ingress {
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -43,6 +43,7 @@ resource "aws_security_group_rule" "allow_ssh_from_bastion" {
   cidr_blocks       = ["${module.ec2_instance["bastion-server"].private_ip}/32"]
   security_group_id = aws_security_group.RADIUS-server.id
 }
+
 ## SG for RADIUS
 resource "aws_security_group" "RADIUS-server" {
   name        = "RADIUS-server"
@@ -59,6 +60,16 @@ resource "aws_security_group" "RADIUS-server" {
   tags = {
     Name = "RADIUS-server"
   }
+}
+
+# Let RADIUS server access the Dirctory
+resource "aws_security_group_rule" "allow_all_from_RADIUS" {
+  type              = "ingress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["${module.ec2_instance["radius-server"].private_ip}/32"]
+  security_group_id = aws_directory_service_directory.aws-managed-ad.security_group_id
 }
 
 locals {
