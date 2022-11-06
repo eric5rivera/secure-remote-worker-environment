@@ -40,7 +40,7 @@ resource "aws_security_group_rule" "allow_radius_auth_out_to_radius_servers" {
   from_port                = 1812
   to_port                  = 1812
   protocol                 = "udp"
-  source_security_group_id = aws_security_group.RADIUS-server.id
+  source_security_group_id = aws_security_group.radius-server.id
   security_group_id        = aws_directory_service_directory.aws-managed-ad.security_group_id
 }
 
@@ -52,7 +52,7 @@ resource "aws_security_group_rule" "allow_radius_auth_from_directory" {
   to_port           = 0
   protocol          = "-1"
   cidr_blocks       = ["${sort(aws_directory_service_directory.aws-managed-ad.dns_ip_addresses)[0]}/32"]
-  security_group_id = aws_security_group.RADIUS-server.id
+  security_group_id = aws_security_group.radius-server.id
 }
 
 # Allow access to RADIUS
@@ -62,5 +62,5 @@ resource "aws_security_group_rule" "allow_radius_auth_from_directory2" {
   to_port           = 0
   protocol          = "-1"
   cidr_blocks       = ["${sort(aws_directory_service_directory.aws-managed-ad.dns_ip_addresses)[1]}/32"]
-  security_group_id = aws_security_group.RADIUS-server.id
+  security_group_id = aws_security_group.radius-server.id
 }
