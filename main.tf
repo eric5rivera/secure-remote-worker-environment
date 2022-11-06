@@ -98,10 +98,10 @@ module "ec2_instance" {
   name                   = each.key
   vpc_security_group_ids = each.value.security_group
   subnet_id              = each.value.subnet
-  # This is where we configure the instance with ansible-playbook
-  provisioner "local-exec" {
-    command = "sleep 120; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu --private-key ./deployer.pem -i '${aws_instance.jenkins_master.public_ip},' master.yml"
-  }
+  # # This is where we configure the instance with ansible-playbook
+  # provisioner "local-exec" {
+  #   command = "sleep 120; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu --private-key ./deployer.pem -i '${aws_instance.jenkins_master.public_ip},' master.yml"
+  # }
 
   tags = {
     Terraform   = "true"
