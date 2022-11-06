@@ -15,6 +15,7 @@ resource "aws_security_group" "bastion-server" {
   vpc_id      = module.vpc.vpc_id
 
   ingress {
+    description = "Allow inbound SSH from anywhere"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -22,6 +23,7 @@ resource "aws_security_group" "bastion-server" {
   }
 
   egress {
+    description = "Allow outbound SSH to RADIUS server"
     from_port       = 22
     to_port         = 22
     protocol        = "tcp"
@@ -36,6 +38,7 @@ resource "aws_security_group" "bastion-server" {
 
 # Let bastion server ping and ssh to the RADIUS
 resource "aws_security_group_rule" "allow_ssh_from_bastion" {
+  description = "All ingress SSH from bastion server"
   type              = "ingress"
   from_port         = 22
   to_port           = 22
@@ -51,6 +54,7 @@ resource "aws_security_group" "radius-server" {
   vpc_id      = module.vpc.vpc_id
 
   egress {
+    description = "Allow all out to anywhere"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
@@ -64,6 +68,7 @@ resource "aws_security_group" "radius-server" {
 
 # Let RADIUS server access the Dirctory
 resource "aws_security_group_rule" "allow_all_from_radius" {
+  description = "Allow all inbound from RADIUS server"
   type              = "ingress"
   from_port         = 0
   to_port           = 0
