@@ -3,7 +3,6 @@ data "aws_workspaces_bundle" "value_windows_10_server_2019_based" {
   bundle_id = "wsb-fb2xfp6r8"
 }
 
-
 data "aws_iam_policy_document" "workspaces" {
   statement {
     actions = ["sts:AssumeRole"]
@@ -33,6 +32,10 @@ resource "aws_workspaces_directory" "workspaces-directory" {
   directory_id = aws_directory_service_directory.aws-managed-ad.id
   subnet_ids   = module.vpc.private_subnets
   depends_on   = [aws_iam_role.workspaces-default]
+
+  workspace_creation_properties {
+    custom_security_group_id = aws_security_group.workspaces.id
+  }
 }
 
 resource "aws_kms_key" "workspaces-kms" {
@@ -40,6 +43,22 @@ resource "aws_kms_key" "workspaces-kms" {
   deletion_window_in_days = 7
 }
 
+resource "aws_security_group" "workspaces" {
+  name        = "workspace-members-sg"
+  description = "Allow WorkSpaces access to internet"
+  vpc_id      = module.vpc.vpc_id
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "workspaces-sg"
+  }
+}
 
 resource "aws_workspaces_workspace" "workspaces" {
   directory_id = aws_workspaces_directory.workspaces-directory.id
