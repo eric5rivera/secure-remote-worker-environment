@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 - name: Install linOTP
   hosts: all
@@ -18,27 +17,7 @@
         - httpd
         - mariadb-server
       state: latest
-||||||| parent of 99cfefd (Include MFA guide doc and the beginnings of Ansible)
-=======
----
-- name: Install linOTP
-  hosts: all
-  remote_user: ubuntu
-  become: yes
 
-  roles:
-  - engin
-
-  ---
-- hosts: all
-  tasks:
-  - name: Package installation
-    yum:
-      name:
-        - sysstat
-        - httpd
-        - mariadb-server
-      state: latest
 
 
 
