@@ -17,10 +17,10 @@ Inspired by [AWS's Secure Remote Worker Environment Reference Architecture](http
 - more
 
 
-![Alt text](./secure_remote_worker_environment.png) "Secure Remote Worker Environment diagram")
+![Alt text](./secure_remote_worker_environment.png) ("Secure Remote Worker Environment diagram")
 
 
-As for now, the following resources are provisioned by Ansible:
+Currently, the following resources are provisioned by Ansible:
 - AWS Managed Microsoft AD
 - AWS WorkSpace
 - FSx File Server
@@ -47,9 +47,11 @@ terraform init
 ```
 
 ## Future Work
-- [ ]Implement multi-factor authentication (MFA)
+- Provision resources using Terraform
+- Automate configuration with Ansible
+- Implement multi-factor authentication (MFA)
 - Implement Group policy in Active Directory to prevent unwanted activities
-- Forward DNS to Amazon Route 53 VPC DNS resolver with applied Route 53 Resolver DNS Firewall
+- Implement Group policy in Active Directory to prevent unwanted activities
 rules
 - Stand up AWS Network Firewall, NAT gateway and internet gateway
 - Configure firewall rules to block outbound
