@@ -1,9 +1,10 @@
 # Secure Remote Worker Environment
-Inspired by [AWS's Secure Remote Worker Environment Reference Architecture](https://d1.awsstatic.com/architecture-diagrams/ArchitectureDiagrams/secure-remote-worker-environment-ra.pdf?did=wp_card&trk=wp_card); deployed using Infrastructure as Code (IaC).
+Inspired by [AWS's Secure Remote Worker Environment Reference Architecture](https://d1.awsstatic.com/architecture-diagrams/ArchitectureDiagrams/secure-remote-worker-environment-ra.pdf?did=wp_card&trk=wp_card), this implimentation is deployed using Infrastructure as Code (IaC).
 
+The project is intended to be easily deployed.
 
 ## Table of Contents
-- [Technologies](#technologies)
+- [Overview](#overview)
 - [Getting Started](#getting-started)
     - [Pre-requisites](#pre-requisites)
     - [Usage](#usage)
@@ -11,7 +12,8 @@ Inspired by [AWS's Secure Remote Worker Environment Reference Architecture](http
 - [References](#references)
 
 
-## Technologies
+## Overview
+The following technologies are leveraged
 - Terrafrom
 - Ansible (in the future)
 - more
