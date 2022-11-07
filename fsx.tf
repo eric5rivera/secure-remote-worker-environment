@@ -26,6 +26,6 @@ resource "aws_security_group" "allow_smb" {
 resource "aws_kms_key" "fsx-kms" {
   description             = "fsx key"
   deletion_window_in_days = 7
-  enable_key_rotation = true
+  enable_key_rotation     = true
 }
 
