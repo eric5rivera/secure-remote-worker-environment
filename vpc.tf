@@ -13,6 +13,7 @@ module "vpc" {
   one_nat_gateway_per_az = false
   enable_dns_hostnames   = true
   enable_dns_support     = true
+  map_public_ip_on_launch = false
   tags = {
     Name        = "demo-dev"
     Environment = "Development"
