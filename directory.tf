@@ -36,7 +36,7 @@ resource "aws_vpc_dhcp_options_association" "dns_resolver" {
 
 # Allow outbound 1812 access from Directory to RADIUS 
 resource "aws_security_group_rule" "allow_radius_auth_out_to_radius_servers" {
-  description = "Allow outbound RADIUS auth to RADIUS server"
+  description              = "Allow outbound RADIUS auth to RADIUS server"
   type                     = "egress"
   from_port                = 1812
   to_port                  = 1812
@@ -48,7 +48,7 @@ resource "aws_security_group_rule" "allow_radius_auth_out_to_radius_servers" {
 
 # Allow access to RADIUS
 resource "aws_security_group_rule" "allow_radius_auth_from_directory" {
-  description = "All all inbound from directory"
+  description       = "All all inbound from directory"
   type              = "ingress"
   from_port         = 0
   to_port           = 0
@@ -59,7 +59,7 @@ resource "aws_security_group_rule" "allow_radius_auth_from_directory" {
 
 # Allow access to RADIUS
 resource "aws_security_group_rule" "allow_radius_auth_from_directory2" {
-  description = "All all inbound from directory"
+  description       = "All all inbound from directory"
   type              = "ingress"
   from_port         = 0
   to_port           = 0

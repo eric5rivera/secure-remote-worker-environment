@@ -90,7 +90,7 @@ resource "aws_workspaces_workspace" "workspaces" {
 
 # Allow access to FSx
 resource "aws_security_group_rule" "allow_smb_from_workspace" {
-  description = "Allow inbound SMB traffic from private subnets"
+  description       = "Allow inbound SMB traffic from private subnets"
   type              = "ingress"
   from_port         = 445
   to_port           = 445
