@@ -41,6 +41,7 @@ resource "aws_workspaces_directory" "workspaces-directory" {
 resource "aws_kms_key" "workspaces-kms" {
   description             = "Muzakkir  KMS"
   deletion_window_in_days = 7
+  enable_key_rotation = true
 }
 
 resource "aws_security_group" "workspaces" {
