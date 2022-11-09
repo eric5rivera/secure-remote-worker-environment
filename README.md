@@ -16,6 +16,7 @@ The project is intended to be easily deployed.
 The following technologies are leveraged
 - Terrafrom
 - Ansible (in the future)
+- [tfsec](https://aquasecurity.github.io/tfsec/v1.28.1/)
 - more
 
 
