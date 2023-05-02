@@ -1,5 +1,5 @@
 # Secure Remote Worker Environment
-Inspired by [AWS's Secure Remote Worker Environment Reference Architecture](https://d1.awsstatic.com/architecture-diagrams/ArchitectureDiagrams/secure-remote-worker-environment-ra.pdf?did=wp_card&trk=wp_card), this implimentation is deployed using Infrastructure as Code (IaC).
+This project seeks to automate the provisioning and configuration of an environment in AWS inspired by [AWS's Secure Remote Worker Environment Reference Architecture](https://d1.awsstatic.com/architecture-diagrams/ArchitectureDiagrams/secure-remote-worker-environment-ra.pdf?did=wp_card&trk=wp_card).
 
 The project is intended to be easily deployed.
 
@@ -23,7 +23,7 @@ The following technologies are leveraged
 ![Alt text](./secure_remote_worker_environment.png) ("Secure Remote Worker Environment diagram")
 
 
-Currently, the following resources are provisioned by Ansible:
+Currently, the following resources are provisioned by Terraform:
 - AWS Managed Microsoft AD
 - AWS WorkSpace
 - FSx File Server
@@ -49,10 +49,15 @@ These instructions will get you a copy of the project up and running on your loc
 terraform init
 ```
 
+
+```bash
+terraform apply
+```
+
 ## Future Work
-- Provision resources using Terraform
+- Provision all of the resources using Terraform
 - Automate configuration with Ansible
-- Implement multi-factor authentication (MFA)
+- Configure RADIUS server to accept YubiKey as second factor
 - Implement Group policy in Active Directory to prevent unwanted activities
 - Implement Group policy in Active Directory to prevent unwanted activities
 rules
