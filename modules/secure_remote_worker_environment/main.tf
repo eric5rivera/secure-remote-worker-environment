@@ -1,49 +1,3 @@
-terraform {
-  cloud {
-    organization = "ericmrivera"
-
-    workspaces {
-      name = "secure-remote-worker-environment"
-    }
-  }
-}
-
-# Security group for bastion server
-resource "aws_security_group" "bastion-server" {
-  name        = "bastion-server"
-  description = "This is the bastion server"
-  vpc_id      = module.vpc.vpc_id
-
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name = "bastion-server"
-  }
-}
-
-
-# Let bastion server ping and ssh to the RADIUS
-resource "aws_security_group_rule" "allow_ssh_from_bastion" {
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  cidr_blocks       = ["${module.ec2_instance["bastion-server"].private_ip}/32"]
-  security_group_id = aws_security_group.RADIUS-server.id
-}
-
 ## SG for RADIUS
 resource "aws_security_group" "RADIUS-server" {
   name        = "RADIUS-server"
@@ -80,7 +34,7 @@ locals {
     }
     "bastion-server" = {
       subnet         = module.vpc.public_subnets[0]
-      security_group = [aws_security_group.bastion-server.id]
+      security_group = []
     }
   }
 }
