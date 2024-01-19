@@ -32,10 +32,6 @@ locals {
       subnet         = module.vpc.private_subnets[0]
       security_group = [aws_security_group.RADIUS-server.id]
     }
-    "bastion-server" = {
-      subnet         = module.vpc.public_subnets[0]
-      security_group = []
-    }
   }
 }
 
